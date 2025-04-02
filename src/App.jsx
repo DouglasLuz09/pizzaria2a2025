@@ -1,10 +1,10 @@
 import {useState} from 'react'
-
+ 
 function App(){
-
+ 
   const [nome, setNome] = useState('Ronaldo');
-
-  const Formulario = () => {
+ 
+  const Formulario = (props) => {
     return (
       <>
         <h4>Formulário de Inscrição</h4>
@@ -13,21 +13,26 @@ function App(){
             placeholder="Digite seu nome..."
             onChange={(e)=>setNome(e.target.value)}
             type="text" />
-        <button onClick={()=>{alert(nome)}}>
+        <button onClick={()=>{
+          (props.texto != null) ? alert(props.texto) : alert(nome)
+          }}>
           CLIQUE AQUI
         </button>
       </>
     )
   }
-
+ 
   return (
     <div>
       <h3>Pizzaria 2A</h3>
-      <Formulario />
-      <Formulario />
-      <Formulario />
+      <Formulario texto="Texto enviado pelo App" />
+      <Formulario texto= "eca corinthians"/>
+      <Formulario texto= "Novo texto enviado pelo App"/>
+      <Formulario nome={nome}/>
     </div>
   )
 }
-
+ 
 export default App
+ 
+ 
